@@ -1,0 +1,200 @@
+<!-- <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a routerLink="home" class="nav-link" routerLinkActive="active">Home</a>
+        </li>
+        <li class="nav-item">
+            <a routerLink="about" class="nav-link" routerLinkActive="active">About</a>
+        </li>
+        <li class="nav-item">
+            <a routerLink="contact" class="nav-link" routerLinkActive="active">Contact</a>
+        </li>
+    </ul>
+</nav> -->
+
+<p>home works!</p>
+
+<p> {{ title }} </p>
+<p [textContent]=title></p>
+
+<ul>
+    <li> Nom : {{ personne.nom }} </li>
+    <li> Prenom : {{ personne.prenom }} </li>
+</ul>
+
+{{ personne | json }}
+
+<ul>
+    <li> {{ tab[0] }} </li>
+    <li> {{ tab[1] }} </li>
+    <li> {{ tab[2] }} </li>
+    <li> {{ tab[3] }} </li>
+</ul>
+
+<p>{{ direBonjour() }}</p>
+
+<ul>
+    <li *ngFor="let elt of tab; let i = index; let isFirst = first; let isEven = even">
+        {{ i }} : {{ elt }} : {{ isFirst }} : {{ isEven }}
+    </li>
+</ul>
+
+<ul>
+    <li *ngIf="tab[0] % 2 != 0; else sinon">
+        tab[0] : {{ tab[0] }} est impair
+    </li>
+    <ng-template #sinon>
+        <li>
+            tab[0] : {{ tab[0] }} est pair
+        </li>
+    </ng-template>
+</ul>
+
+<ul>
+    <li *ngIf="tab[0] % 2 != 0; then si else sinon">
+        Ce code ne sera jamais pris en compte
+    </li>
+    <ng-template #si>
+        <li>
+            {{ tab[0] }} est impair
+        </li>
+    </ng-template>
+    <ng-template #sinon>
+        <li>
+            {{ tab[0] }} est pair
+        </li>
+    </ng-template>
+</ul>
+
+<ul>
+    <ng-container *ngFor="let elt of tab">
+        <li *ngIf="elt % 2 != 0; else sinon">
+            {{ elt }} est impair
+        </li>
+        <ng-template #sinon>
+            <li>
+                {{ elt }} est pair
+            </li>
+        </ng-template>
+    </ng-container>
+</ul>
+
+<ul>
+    <ng-container *ngFor="let elt of tab">
+        <ng-container [ngSwitch]="elt">
+            <li *ngSwitchCase="1">
+                {{ elt }} = un
+            </li>
+            <li *ngSwitchCase="2">
+                {{ elt }} = deux
+            </li>
+            <li *ngSwitchCase="3">
+                {{ elt }} = trois
+            </li>
+            <li *ngSwitchDefault>
+                {{ elt }} : autre
+            </li>
+        </ng-container>
+    </ng-container>
+</ul>
+
+<ul>
+    <ng-container *ngFor="let elt of tab">
+        <ng-container [ngSwitch]="true">
+            <li *ngSwitchCase="elt >= 0 && elt < 10">
+                {{ elt }} : échec
+            </li>
+            <li *ngSwitchCase="elt >= 10 && elt < 13">
+                {{ elt }} : moyen
+            </li>
+            <li *ngSwitchCase="elt >= 13 && elt < 15">
+                {{ elt }} : bien
+            </li>
+            <li *ngSwitchCase="elt >= 15">
+                {{ elt }} : très bien
+            </li>
+            <li *ngSwitchDefault>
+                autre
+            </li>
+        </ng-container>
+    </ng-container>
+</ul>
+
+<p [textContent]=nom [ngStyle]="{backgroundColor: 'red'}"></p>
+
+<p [ngStyle]="{color: getColor(), backgroundColor:
+      getBackgroundColor()}">
+    {{ nom }}
+</p>
+
+<p [ngClass]="{'rouge': true}">
+    {{ nom }}
+</p>
+
+<p [ngClass]="{'bleu': nom == 'wick' }">
+    {{ nom }}
+</p>
+
+<p [ngClass]="nom == 'wick' ? 'rouge' : 'bleu'">
+    {{ nom }}
+</p>
+
+<ul>
+    <ng-container *ngFor="let elt of tab">
+        <li [ngClass]="{'rouge': elt % 2 != 0, 'bleu': elt % 2 == 0}">
+            {{ elt }}
+        </li>
+    </ng-container>
+</ul>
+
+<p>
+    {{ "bonjour" | uppercase }}
+</p>
+<!-- BONJOUR -->
+
+<p>
+    {{ maDate | date:'d MMM y' }}
+</p>
+<!-- affiche 20 oct 2020 -->
+
+<p>
+    {{ maDate | date:'d MMM y' | uppercase }}
+</p>
+<!-- affiche 26 OCT 2020 -->
+
+<p>
+    {{ "bonjour" | getChar }}
+</p>
+<!-- b -->
+
+<p>
+    {{ "wick" | getChar }}
+    <!-- affiche w -->
+    {{ "john" | getChar }}
+    <!-- affiche j -->
+</p>
+
+<p>
+    {{ "bonjour" | getCharAt:2 }}
+</p>
+<!-- affiche n -->
+{{ "wick" | getCharAt:1}}
+<!-- affiche i -->
+{{ "john" | getCharAt:3 }}
+<!-- affiche n -->
+{{ "wick" | getCharAt:6 }}
+<!-- affiche w -->
+{{ "john" | getCharAt }}
+<!-- affiche j -->
+
+<ul>
+    <li *ngFor="let elt of personne_array">
+        {{ elt.num }},{{ elt.nom | uppercase }},{{ elt.prenom | uppercase }}
+    </li>
+</ul>
+
+<!-- <ul>
+  <li *ngFor="let elt of personne | objToArray">
+      {{ elt }} : {{ personne[elt] | uppercase }}
+  </li>
+</ul> -->
