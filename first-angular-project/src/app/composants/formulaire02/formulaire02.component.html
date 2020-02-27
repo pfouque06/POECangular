@@ -1,0 +1,6 @@
+<p>formulaire02 works!</p>
+<form #monForm=ngForm>
+    <div> Nom : <input type=text name=nom [(ngModel)]=personne.nom required></div>
+    <div> Prénom : <input type=text name=prenom [(ngModel)]=personne.prenom required></div>
+    <div><button (click)="add()" type=submit  [disabled]=!monForm.valid>Ajouter</button></div>
+</form>

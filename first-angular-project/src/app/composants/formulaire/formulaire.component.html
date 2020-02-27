@@ -1,0 +1,14 @@
+<p>formulaire works!</p>
+<div>
+<input type=text [(ngModel)]=nom>
+</div>
+<div>
+    <button (click)="direBonjour()">cliquer</button>
+</div>
+<div>Bonjour {{ result }} </div>
+<p Bonjour [textContent]= "result"> </p>
+
+<div>
+<input type=text [(ngModel)]=label>
+</div>
+<div>Bonjour {{ label }} et {{ nom }} et {{ result }} </div>
