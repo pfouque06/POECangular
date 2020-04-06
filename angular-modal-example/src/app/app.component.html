@@ -1,0 +1,15 @@
+<div>
+  <button mat-raised-button (click)="openDialog()">Email modal</button>
+  <br />
+  <br>
+
+  <div *ngIf="email">
+    You signed up with: <p> {{email}}</p>
+  </div>
+  <div class="progressBarDiv" *ngIf="!email" >
+    <!-- <mat-progress-spinner class="is-loading" mode="indeterminate"></mat-progress-spinner> -->
+    <mat-spinner class="is-loading"></mat-spinner>
+  </div>
+
+</div>
+
