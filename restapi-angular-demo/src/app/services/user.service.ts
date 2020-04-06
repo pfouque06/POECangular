@@ -9,6 +9,8 @@ import{ Observable, Subject } from 'rxjs';
 export class UserService {
 
   private usersUrl: string;
+  /* springboot project: restapi-angular-demo */
+  /* ng serve --open [--port 4200] */
 
   constructor(private http: HttpClient) {
     this.usersUrl = 'http://localhost:8080/users';

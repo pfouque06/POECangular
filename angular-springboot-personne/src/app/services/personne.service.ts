@@ -9,6 +9,8 @@ import { Personne } from '../classes/personne';
 export class PersonneService {
 
   private baseUrl = 'http://localhost:9090/api/v1/personnes';
+  /* springboot project: firstspringstartproject02-dto-service */
+  /* ng serve --open --port 4400 */
 
   constructor(private http: HttpClient) { }
   
