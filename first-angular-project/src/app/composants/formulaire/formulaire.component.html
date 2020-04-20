@@ -3,12 +3,13 @@
 <input type=text [(ngModel)]=nom>
 </div>
 <div>
-    <button (click)="direBonjour()">cliquer</button>
+    <button (click)="direBonjour()">apply</button>
+    -> Bonjour {{ result }}
 </div>
-<div>Bonjour {{ result }} </div>
-<p Bonjour [textContent]= "result"> </p>
+<!-- <p [textContent]= "result"></p> -->
+<hr>
 
 <div>
 <input type=text [(ngModel)]=label>
 </div>
-<div>Bonjour {{ label }} et {{ nom }} et {{ result }} </div>
+<div>-> Bonjour {{ nom }} et {{ label }}</div>

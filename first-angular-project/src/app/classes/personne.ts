@@ -1,27 +1,37 @@
 export class Personne {
-    constructor(private _num?: number, private _nom?: string, private _prenom?: string) { }
 
-    get num() {
-    return this._num;
-    }
+  private static _count?: number = 0;
+  private _id: number;
+  private _nom: string;
+  private _prenom: string;
 
-    set num(_num: number) {
-    this._num = _num;
-    }
+  constructor( nom?: string, prenom?: string) {
+    this._id = ++Personne._count;
+    this._nom = nom;
+    this._prenom = prenom;
+  }
 
-    get nom() {
+  get id(): number {
+    return this._id;
+  }
+
+  set id(id: number) {
+    this._id = id;
+  }
+
+  get nom(): string {
     return this._nom;
-    }
+  }
 
-    set nom(_nom: string) {
+  set nom(_nom: string) {
     this._nom = _nom;
-    }
+  }
 
-    get prenom() {
+  get prenom(): string {
     return this._prenom;
-    }
+  }
 
-    set prenom(_prenom: string) {
+  set prenom(_prenom: string) {
     this._prenom = _prenom;
-    }
+  }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PersonneService } from '../../services/personne.service';
-import { Personne } from '../../interfaces/personne';
+import { Personne } from '../../classes/personne';
+// import { Personne } from '../../interfaces/personne';
 
 @Component({
   selector: 'app-personne',

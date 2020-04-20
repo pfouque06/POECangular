@@ -9,9 +9,10 @@ export class FormulaireComponent implements OnInit {
 
   nom = "";
   result = "";
+  label = "";
 
   constructor() { }
-  
+
   ngOnInit(): void {
 }
 

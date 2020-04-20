@@ -1,6 +1,63 @@
-<p>formulaire02 works!</p>
-<form #monForm=ngForm>
-    <div> Nom : <input type=text name=nom [(ngModel)]=personne.nom required></div>
-    <div> Prénom : <input type=text name=prenom [(ngModel)]=personne.prenom required></div>
-    <div><button (click)="add()" type=submit  [disabled]=!monForm.valid>Ajouter</button></div>
-</form>
+<div class="container">
+
+  <h1>Personne Form</h1>
+
+  <!-- <form (ngSubmit)="onSubmit()" #personneForm=ngForm> -->
+  <!-- <div [hidden]="!submitted"> -->
+  <div *ngIf="!submitted">
+
+    <form #personneForm=ngForm>
+
+      <div class="form-group">
+        <label for="nom">Nom </label>
+        <input id="nom" class="form-control" type=text name="nom" [(ngModel)]="personne.nom" required #alert_nom="ngModel" #spy_nom>
+        <div [hidden]="alert_nom.valid || alert_nom.pristine" class="alert alert-danger">Le champ Nom est requis</div>
+      </div>
+
+      <div class="form-group">
+        <label for="nom">Prénom </label>
+        <input id="nom"class="form-control" type=text name="prenom" [(ngModel)]="personne.prenom" required #alert_prenom="ngModel" #spy_prenom>
+        <div [hidden]="alert_prenom.valid || alert_prenom.pristine" class="alert alert-danger">Le champ Prénom est requis</div>
+      </div>
+
+      <div class="form-group">
+        <label for="type">Type</label>
+        <select id="type"class="form-control" name="power" [(ngModel)]="type">
+          <option *ngFor="let type of types" [value]="type">{{type}}</option>
+        </select>
+      </div>
+
+      <div><button class="btn btn-primary" (click)="add()" type=submit [disabled]=!personneForm.valid>Ajouter</button></div>
+      <div><button class="btn btn-default" (click)="reset(); personneForm.reset()">Nouveau formulaire</button></div>
+    </form>
+
+    <!-- <p>nom : {{personne.nom}}</p> -->
+    <!-- <p>prenom : {{personne.prenom}}</p> -->
+    <!-- <p>monitoring : {{diagnostic}}</p> -->
+    <!-- <p>spy_nom : {{spy_nom.className}}</p> -->
+    <!-- <p>spy_prenom : {{spy_prenom.className}}</p> -->
+    <!-- <p>type :  {{type}}</p> -->
+    <p>monitoring : {{personne | json}} {{type | json}}</p>
+  </div>
+
+  <!-- <div [hidden]="submitted"> -->
+  <div *ngIf="submitted">
+    <h2>La nouvelle persone ajoutée est :</h2>
+    <div class="row">
+      <div class="col-xs-3">ID</div>
+      <div class="col-xs-9">{{ personne.id }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">Nom</div>
+      <div class="col-xs-9">{{ personne.nom }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">Prenom</div>
+      <div class="col-xs-9">{{ personne.prenom }}</div>
+    </div>
+    <br>
+    <button class="btn btn-default" (click)="new()">Nouveau formulaire</button>
+  </div>
+
+
+</div>

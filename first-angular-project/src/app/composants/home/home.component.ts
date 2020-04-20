@@ -14,8 +14,8 @@ export class HomeComponent implements OnInit {
   }
 
   title = 'first-angular-project';
-  
-  personne: Personne = new Personne(100, "Wick", "John");
+
+  personne: Personne = new Personne("Wick", "John");
 
   tab: number[] = [2, 3, 5, 8];
 

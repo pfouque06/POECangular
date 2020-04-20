@@ -1,31 +1,51 @@
-import { Component, OnInit } from '@angular/core';
-import { PersonneService } from '../../services/personne.service';
-import { Personne } from '../../interfaces/personne';
+import { Component, OnInit } from "@angular/core";
+import { Personne } from "src/app/classes/personne";
+import { PersonneService } from "src/app/services/personne.service";
 
 @Component({
-  selector: 'app-formulaire02',
-  templateUrl: './formulaire02.component.html',
-  styleUrls: ['./formulaire02.component.css']
+  selector: "app-formulaire02",
+  templateUrl: "./formulaire02.component.html",
+  styleUrls: ["./formulaire02.component.css"],
 })
 export class Formulaire02Component implements OnInit {
+  personne: Personne = new Personne();
+  types: string[] = [
+    "Really Smart",
+    "Super Flexible",
+    "Super Hot",
+    "Weather Changer",
+  ];
+  type: string;
+  submitted: boolean = false;
 
-  personne: Personne = { };
-  constructor(private personneService: PersonneService) { }
 
-  ngOnInit(): void {
+
+  constructor(private personneService: PersonneService) {}
+
+  ngOnInit(): void {}
+
+  // natural mehtod called on submit type button click action
+  // onSubmit() { this.submitted = true; }
+
+  add(): void {
+    this.personneService.addPerson(this.personne);
+    this.submitted = true;
   }
 
-  add() {
-    /* if (!this.personneIsEmpty()) */
-      this.personneService.addPerson(this.personne);
+  reset(): void {
+    // this.personne = new Personne();
+    this.personne.nom = "";
+    this.personne.prenom = "";
   }
 
-/*   isEmpty(str:string) {
-    return str.isEmpty();
+  new(): void {
+    this.personne = new Personne();
+    this.type = "";
+    this.submitted = false;
   }
 
-  personneIsEmpty() {
-     return isEmpty(this.personne.nom) || isEmpty(this.personne.prenom);
-  } */
-
+  // TODO: Remove this when we're done
+  get diagnostic() {
+    return JSON.stringify(this.personne);
+  }
 }
